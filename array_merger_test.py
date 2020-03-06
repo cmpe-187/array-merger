@@ -5,10 +5,27 @@ __license__ = "MIT"
 from array_merger import *
 import unittest
 
-class test(unittest.TestCase):
-    def test1(self):
-        list1 = [1, 2, 7, 11]
-        list2 = [3, 7, 13, 16, 29]
-        merged_list = array_merger(list1, list2)
-        expected_list = [1, 2, 3, 7, 7, 11, 13, 16, 29]
-        self.assertEqual(merged_list, expected_list)
+
+class TestTwoEmptyLists(unittest.TestCase):
+    def test_two_empty_lists(self):
+        list1 = []
+        list2 = []
+        expected_output = []
+        actual_output = array_merger(list1, list2)
+        self.assertEqual(expected_output, actual_output)
+
+
+class TestOneEmptyList(unittest.TestCase):
+    def test_first_list_empty(self):
+        list1 = []
+        list2 = [0]
+        expected_output = [0]
+        actual_output = array_merger(list1, list2)
+        self.assertEqual(expected_output, actual_output)
+
+    def test_second_list_empty(self):
+        list1 = [0]
+        list2 = []
+        expected_output = [0]
+        actual_output = array_merger(list1, list2)
+        self.assertEqual(expected_output, actual_output)
