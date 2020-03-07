@@ -101,18 +101,18 @@ class TestFullLists(unittest.TestCase):
 ## Independent Paths
 
 > - _Path 1: 1-2-3-8-10-12_
-> - _Path 2: 1-2-3-8-10-11-10-12_
-> - _Path 3: 1-2-3-8-9-8-10-12_
-> - _Path 4: 1-2-3-4-5-7-3-8-10-11-10-12_
-> - _Path 5: 1-2-3-4-6-7-3-8-9-8-10-12_
+> - _Path 2: 10-11-10_
+> - _Path 3: 8-9-8_
+> - _Path 4: 2-3-4-5-7_
+> - _Path 5: 3-4-6-7-3_
 
 ### Simple Paths TODO
 
-> _A simple path is a path in which all nodes, except possibly the first and the last, are distinct._
+> _Paths 1, 2, 3, 4 and 5 are all simple paths since all of the nodes are distinct aside from the first and last nodes in paths 2, 3 and 5._
 
 ### Loop-Free Paths TODO
 
-> _A loop-free path is a path in which **all** nodes are distinct._
+> _Paths 1 and 4 are loop-free paths since every node is distinct._
 
 ## `def()`, `c-use()`, `p-use()`
 
