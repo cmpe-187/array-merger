@@ -100,6 +100,12 @@ class TestFullLists(unittest.TestCase):
 
 ## Independent Paths
 
+> _Path 1: 1-2-3-8-10-12_
+> _Path 2: 1-2-3-8-10-11-10-12_
+> _Path 3: 1-2-3-8-9-8-10-12_
+> _Path 4: 1-2-3-4-5-7-3-8-10-11-10-12_
+> _Path 5: 1-2-3-4-6-7-3-8-9-8-10-12_
+
 ### Simple Paths TODO
 
 > _A simple path is a path in which all nodes, except possibly the first and the last, are distinct._
