@@ -36,7 +36,6 @@ def array_merger(list1, list2):
 ## `test_array_merger.py`
 
 ```python
-def array_merger(list1, list2):
 __author__ = "Zelin Cai, Patrick Silvestre"
 __version__ = "0.1.0"
 __license__ = "MIT"
@@ -46,7 +45,11 @@ import unittest
 
 
 class TestTwoEmptyLists(unittest.TestCase):
-    def test_two_empty_lists(self):
+    def test_01_two_empty_lists(self):
+        """
+        Nodes:
+        1-2-3-8-10-12
+        """
         list1 = []
         list2 = []
         expected_output = []
@@ -55,14 +58,26 @@ class TestTwoEmptyLists(unittest.TestCase):
 
 
 class TestOneEmptyList(unittest.TestCase):
-    def test_first_list_empty(self):
+    def test_02_first_list_empty(self):
+        """
+        Nodes:
+        1-2-3-8-
+            10-11-
+            10-12
+        """
         list1 = []
         list2 = [0]
         expected_output = [0]
         actual_output = array_merger(list1, list2)
         self.assertEqual(expected_output, actual_output)
 
-    def test_second_list_empty(self):
+    def test_03_second_list_empty(self):
+        """
+        Nodes:
+        1-2-3-
+            8-9-
+            8-10-12
+        """
         list1 = [0]
         list2 = []
         expected_output = [0]
@@ -71,27 +86,61 @@ class TestOneEmptyList(unittest.TestCase):
 
 
 class TestFullLists(unittest.TestCase):
-    def test_list1_with_leftover_values(self):
+    def test_04_list1_with_leftover_values(self):
+        """
+        Nodes:
+        1-2-
+            3-4-6-7-
+            3-4-6-7-
+            3-4-6-7-
+            3-
+                8-9-
+                8-9-
+                8-9-
+                8-9-
+                8-10-12
+        """
         list1 = [3, 4, 5, 6]
         list2 = [0, 1, 2]
         expected_output = [0, 1, 2, 3, 4, 5, 6]
         actual_output = array_merger(list1, list2)
         self.assertEqual(expected_output, actual_output)
 
-    def test_list2_with_leftover_values(self):
+    def test_05_list2_with_leftover_values(self):
+        """
+        Nodes:
+        1-2-
+            3-4-5-7-
+            3-4-5-7-
+            3-4-5-7-
+            3-8-
+                10-11-
+                10-11-
+                10-11-
+                10-11-
+                10-12
+        """
         list1 = [0, 1, 2]
         list2 = [3, 4, 5, 6]
         expected_output = array_merger(list1, list2)
         actual_output = array_merger(list1, list2)
         self.assertEqual(expected_output, actual_output)
 
-    def test_same_sized_lists(self):
+    def test_06_same_sized_lists(self):
+        """
+        Nodes:
+        1-2-3-4-5-7-
+            3-4-6-7-
+            3-4-5-7-
+            3-4-6-7-
+            3-4-5-7-
+            3-4-6-7-8-10-12
+        """
         list1 = [0, 2, 4]
         list2 = [1, 3, 5]
         expected_output = [0, 1, 2, 3, 4, 5]
         actual_output = array_merger(list1, list2)
         self.assertEqual(expected_output, actual_output)
-
 ```
 
 ## Data Flow Graph
@@ -153,40 +202,32 @@ Paths 1 and 4 are loop-free paths since every node is distinct.
 | **(11, 10)** | `true`                                | {}                           |
 | **(10, 12)** | `!(j < len(list2))`                   | {`j`, `list2`}               |
 
-## Def-Use Associations
+## Def-Use Associations and Associated Test Cases
+
+(When creating test cases, we attempted to follow the _All du Paths Strategy_.)
 
 ### Variable `i`
 
-- (i, 2, (3, T))
-
-- (i, 2, (3, F))
-
-- (i, 2, (4, T))
-
-- (i, 2, (4, F))
-
-- (i, 2, 5)
-
-- (i, 2, (8, T))
-
-- (i, 2, (8, F))
-
-- (i, 2, 9)
+| du path        | Test Case(s)     | (path)       |
+| -------------- | ---------------- | ------------ |
+| (i, 2, (3, T)) | 4, 5, 6          | 2-3-4        |
+| (i, 2, (3, F)) | 1, 2, 3          | 2-3-8        |
+| (i, 2, (4, T)) | 5, 6             | 2-3-4-5      |
+| (i, 2, (4, F)) | 4, 6             | 2-3-4-6      |
+| (i, 2, 5)      | 5, 6             | 2-3-4-5      |
+| (i, 2, (8, T)) | 3, 4             | 2-3-...-8-9  |
+| (i, 2, (8, F)) | 1, 2, 3, 4, 5, 6 | 2-3-...-8-10 |
+| (i, 2, 9)      | 3, 4             | 2-3-...-8-9  |
 
 ### Variable `j`
 
-- (j, 2, (3, T))
-
-- (j, 2, (3, F))
-
-- (j, 2, (4, T))
-
-- (j, 2, (4, F))
-
-- (j, 2, 6)
-
-- (j, 2, (10, T))
-
-- (j, 2, (10, F))
-
-- (j, 2, 11)
+| du path         | Test Case(s)     | (path)        |
+| --------------- | ---------------- | ------------- |
+| (j, 2, (3, T))  | 4, 5, 6          | 2-3-4         |
+| (j, 2, (3, F))  | 1, 2, 3          | 2-3-8         |
+| (j, 2, (4, T))  | 5, 6             | 2-3-4-5       |
+| (j, 2, (4, F))  | 4, 6             | 2-3-4-6       |
+| (j, 2, 6)       | 4, 6             | 2-3-4-6       |
+| (j, 2, (10, T)) | 2, 5             | 2-3-...-10-11 |
+| (j, 2, (10, F)) | 1, 2, 3, 4, 5, 6 | 2-3-...-10-12 |
+| (j, 2, 11)      | 2, 5             | 2-3-...-11    |
