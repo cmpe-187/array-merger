@@ -100,26 +100,25 @@ class TestFullLists(unittest.TestCase):
 
 ## Independent Paths
 
-> - _Path 1: 1-2-3-8-10-12_
-> - _Path 2: 10-11-10_
-> - _Path 3: 8-9-8_
-> - _Path 4: 2-3-4-5-7_
-> - _Path 5: 3-4-6-7-3_
+- Path 1: 1 - 2 - 3 - 8 - 10 - 12
+
+- Path 2: 10 - 11 - 10
+
+- Path 3: 8 - 9 - 8
+
+- Path 4: 2 - 3 - 4 - 5 - 7
+
+- Path 5: 3 - 4 - 6 - 7 - 3
 
 ### Simple Paths
 
-> _Paths 1, 2, 3, 4 and 5 are all simple paths since all of the nodes are distinct aside from the first and last nodes in paths 2, 3 and 5._
+Paths 1, 2, 3, 4 and 5 are all simple paths since all of the nodes are distinct aside from the first and last nodes in paths 2, 3 and 5.
 
 ### Loop-Free Paths
 
-> _Paths 1 and 4 are loop-free paths since every node is distinct._
+Paths 1 and 4 are loop-free paths since every node is distinct.
 
-## `def()`, `c-use()`, `p-use()`
-
-> - _Definition: This occurs when a value is moved into the memory location of the variable._
-> - _Use: This occurs when the value is fetched from the memory location of the variable_
->   - _C-use: In a c-use, a potentially new value of another variable or of the same variable is produced._
->   - _P-use: This refers to the use of a variable in a predicate controlling the flow of execution._
+## def(), c-use(), p-use()
 
 | Nodes `i` | `def(i)`                    | `c-use(i)`        |
 | --------- | --------------------------- | ----------------- |
@@ -155,22 +154,39 @@ class TestFullLists(unittest.TestCase):
 | **(10, 12)** | `!(j < len(list2))`                   | {`j`, `list2`}               |
 
 ## Def-Use Associations
-> - _Variable i:_
->   - _(i, 2, (3,T))_
->   - _(i, 2, (3,F))_
->   - _(i, 2, (4,T))_
->   - _(i, 2, (4,F))_
->   - _(i, 2, 5)_
->   - _(i, 2, (8,T))_
->   - _(i, 2, (8,F))_
->   - _(i, 2, 9)_
 
-> - _Variable j:_
->   - _(j, 2, (3,T))_
->   - _(j, 2, (3,F))_
->   - _(j, 2, (4,T))_
->   - _(j, 2, (4,F))_
->   - _(j, 2, 6)_
->   - _(j, 2, (10,T))_
->   - _(j, 2, (10,F))_
->   - _(j, 2, 11)_
+### Variable `i`
+
+- (i, 2, (3, T))
+
+- (i, 2, (3, F))
+
+- (i, 2, (4, T))
+
+- (i, 2, (4, F))
+
+- (i, 2, 5)
+
+- (i, 2, (8, T))
+
+- (i, 2, (8, F))
+
+- (i, 2, 9)
+
+### Variable `j`
+
+- (j, 2, (3, T))
+
+- (j, 2, (3, F))
+
+- (j, 2, (4, T))
+
+- (j, 2, (4, F))
+
+- (j, 2, 6)
+
+- (j, 2, (10, T))
+
+- (j, 2, (10, F))
+
+- (j, 2, 11)
