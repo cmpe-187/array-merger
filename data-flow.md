@@ -106,11 +106,11 @@ class TestFullLists(unittest.TestCase):
 > - _Path 4: 2-3-4-5-7_
 > - _Path 5: 3-4-6-7-3_
 
-### Simple Paths TODO
+### Simple Paths
 
 > _Paths 1, 2, 3, 4 and 5 are all simple paths since all of the nodes are distinct aside from the first and last nodes in paths 2, 3 and 5._
 
-### Loop-Free Paths TODO
+### Loop-Free Paths
 
 > _Paths 1 and 4 are loop-free paths since every node is distinct._
 
@@ -154,4 +154,23 @@ class TestFullLists(unittest.TestCase):
 | **(11, 10)** | `true`                                | {}                           |
 | **(10, 12)** | `!(j < len(list2))`                   | {`j`, `list2`}               |
 
-## Def-Use Associations TODO
+## Def-Use Associations
+> - _Variable i:_
+>   - _(i, 2, (3,T))_
+>   - _(i, 2, (3,F))_
+>   - _(i, 2, (4,T))_
+>   - _(i, 2, (4,F))_
+>   - _(i, 2, 5)_
+>   - _(i, 2, (8,T))_
+>   - _(i, 2, (8,F))_
+>   - _(i, 2, 9)_
+
+> - _Variable j:_
+>   - _(j, 2, (3,T))_
+>   - _(j, 2, (3,F))_
+>   - _(j, 2, (4,T))_
+>   - _(j, 2, (4,F))_
+>   - _(j, 2, 6)_
+>   - _(j, 2, (10,T))_
+>   - _(j, 2, (10,F))_
+>   - _(j, 2, 11)_
