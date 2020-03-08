@@ -234,22 +234,22 @@ Paths 1 and 4 are loop-free paths since every node is distinct.
 \begin{table}[H]
 	\begin{tabular}{|l|l|l|}
 		\hline
-		Edges (i, j) & predicate(i, j)                                                  & p-use(i, j)                             \\ \hline
-		(1, 2)       & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(2, 3)       & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(3, 4)       & \texttt{i \textless \ len(list1) \&\& j \textless\  len(list2)}  & \{\texttt{i, list1, j, list2}\}         \\ \hline
-		(4, 5)       & \texttt{list1{[}i{]} \textless \ {}= list2{[}j{]} }              & \{\texttt{list1{[}i{]}, list2{[}j{]}\}} \\ \hline
-		(4, 6)       & \texttt{!(list1{[}i{]} \textless{}= list2{[}j{]})}               & \{\texttt{list1{[}i{]}, list2{[}j{]}\}} \\ \hline
-		(5, 7)       & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(6, 7)       & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(7, 3)       & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(3, 8)       & \texttt{!(i \textless \ len(list1) \&\& j \textless len(list2))} & \{\texttt{i, list1,j, list2\}}          \\ \hline
-		(8, 9)       & \texttt{i \textless \ len(list1)}                                & \{\texttt{i, list1\}}                   \\ \hline
-		(9, 8)       & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(8, 10)      & \texttt{!(i \textless \ len(list1))}                             & \{\texttt{i, list1\}}                   \\ \hline
-		(10, 11)     & \texttt{j \textless \ len(list2)}                                & \{\texttt{j, list2\}}                   \\ \hline
-		(11, 10)     & \texttt{true}                                                    & \{\}                                    \\ \hline
-		(10, 12)     & \texttt{!(j \textless \ len(list2))}                             & \{\texttt{j, list2\}}                   \\ \hline
+		Edges (\texttt{i, j}) & predicate(\texttt{i, j})                                         & \texttt{p-use(i, j)}                    \\ \hline
+		(1, 2)                & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(2, 3)                & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(3, 4)                & \texttt{i \textless \ len(list1) \&\& j \textless\  len(list2)}  & \{\texttt{i, list1, j, list2}\}         \\ \hline
+		(4, 5)                & \texttt{list1{[}i{]} \textless \ {}= list2{[}j{]} }              & \{\texttt{list1{[}i{]}, list2{[}j{]}\}} \\ \hline
+		(4, 6)                & \texttt{!(list1{[}i{]} \textless{}= list2{[}j{]})}               & \{\texttt{list1{[}i{]}, list2{[}j{]}\}} \\ \hline
+		(5, 7)                & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(6, 7)                & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(7, 3)                & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(3, 8)                & \texttt{!(i \textless \ len(list1) \&\& j \textless len(list2))} & \{\texttt{i, list1,j, list2\}}          \\ \hline
+		(8, 9)                & \texttt{i \textless \ len(list1)}                                & \{\texttt{i, list1\}}                   \\ \hline
+		(9, 8)                & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(8, 10)               & \texttt{!(i \textless \ len(list1))}                             & \{\texttt{i, list1\}}                   \\ \hline
+		(10, 11)              & \texttt{j \textless \ len(list2)}                                & \{\texttt{j, list2\}}                   \\ \hline
+		(11, 10)              & \texttt{true}                                                    & \{\}                                    \\ \hline
+		(10, 12)              & \texttt{!(j \textless \ len(list2))}                             & \{\texttt{j, list2\}}                   \\ \hline
 	\end{tabular}
 \end{table}
 
