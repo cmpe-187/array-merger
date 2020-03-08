@@ -130,3 +130,8 @@ dmypy.json
 
 # miscellaneous
 .idea/
+.DS_Store
+doc/data-flow.aux
+doc/data-flow.fdb_latexmk
+doc/data-flow.fls
+doc/data-flow.synctex.gz
